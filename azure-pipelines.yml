@@ -8,7 +8,14 @@ steps:
 - checkout: self
 
 - task: DotNetCoreCLI@2
-  displayName: 'Build Package'
+  displayName: 'Build'
+  inputs:
+    command: 'build'
+    projects: 'src/*/*.fsproj'
+    arguments: '--configuration Release'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack'
   inputs:
     command: 'pack'
     packagesToPack: 'src/*/*.fsproj'
