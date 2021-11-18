@@ -15,15 +15,19 @@ steps:
     arguments: '--configuration Release'
 
 - task: DotNetCoreCLI@2
+  displayName: 'Run unit tests'
+  inputs:
+    command: 'test'
+    projects: 'tests/ExcelFinancialFunctions.Tests/*.fsproj'
+
+- task: DotNetCoreCLI@2
   displayName: 'Pack'
   inputs:
     command: 'pack'
     packagesToPack: 'src/*/*.fsproj'
     configuration: 'Release'
+    packDirectory: '$(Build.ArtifactStagingDirectory)\publish_output'
     versioningScheme: 'off'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Run unit tests'
-  inputs:
-    command: 'test'
-    projects: 'tests/ExcelFinancialFunctions.Tests/*.fsproj'
+- publish: $(Build.ArtifactStagingDirectory)/publish_output/*.nupkg
+  artifact: drop
