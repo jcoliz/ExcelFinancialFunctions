@@ -18,7 +18,7 @@ steps:
   displayName: 'Run unit tests'
   inputs:
     command: 'test'
-    projects: 'tests/ExcelFinancialFunctions.Tests/*.fsproj'
+    projects: 'tests/*/*.fsproj'
 
 - task: DotNetCoreCLI@2
   displayName: 'Pack'
@@ -26,12 +26,12 @@ steps:
     command: 'pack'
     packagesToPack: 'src/*/*.fsproj'
     configuration: 'Release'
-    packDirectory: '$(Build.ArtifactStagingDirectory)'
     versioningScheme: 'off'
+    verbosityPack: 'Normal'
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish package to container'
+  displayName: 'Publish'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
+    ArtifactName: 'package'
     publishLocation: 'Container'
