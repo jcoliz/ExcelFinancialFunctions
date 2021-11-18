@@ -8,17 +8,17 @@ steps:
 - checkout: self
 
 - task: DotNetCoreCLI@2
-  displayName: 'Run unit tests'
-  inputs:
-    command: 'test'
-    projects: 'tests/ExcelFinancialFunctions.Tests/*.fsproj'
-
-- task: DotNetCoreCLI@2
   displayName: 'Build Package'
   inputs:
     command: 'pack'
     arguments: '--output $(System.DefaultWorkingDirectory)/publish_output --configuration Release'
-    projects: 'src/*/*.fsproj'
+    projects: 'src/ExcelFinancialFunctions/*.fsproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run unit tests'
+  inputs:
+    command: 'test'
+    projects: 'tests/ExcelFinancialFunctions.Tests/*.fsproj'
   
 - publish: $(Build.ArtifactStagingDirectory)/publish_output/*.nupkg
   artifact: drop
