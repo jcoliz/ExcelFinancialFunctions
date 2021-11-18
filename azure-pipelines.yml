@@ -26,8 +26,12 @@ steps:
     command: 'pack'
     packagesToPack: 'src/*/*.fsproj'
     configuration: 'Release'
-    packDirectory: '$(Build.ArtifactStagingDirectory)\publish_output'
+    packDirectory: '$(Build.ArtifactStagingDirectory)'
     versioningScheme: 'off'
 
-- publish: $(Build.ArtifactStagingDirectory)/publish_output/*.nupkg
-  artifact: drop
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish package to container'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
