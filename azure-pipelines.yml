@@ -11,14 +11,14 @@ steps:
   displayName: 'Run unit tests'
   inputs:
     command: 'test'
-    projects: 'tests/ExcelFinancialFunctions.Tests/*.csproj'
+    projects: 'tests/ExcelFinancialFunctions.Tests/*.fsproj'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build Package'
   inputs:
     command: 'pack'
     arguments: '--output $(System.DefaultWorkingDirectory)/publish_output --configuration Release'
-    projects: 'src/*/*.csproj'
+    projects: 'src/*/*.fsproj'
   
 - publish: $(Build.ArtifactStagingDirectory)/publish_output/*.nupkg
   artifact: drop
