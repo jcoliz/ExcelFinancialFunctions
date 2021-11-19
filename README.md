@@ -45,7 +45,6 @@ _(Note, the original version of the library is still available [here.](http://co
 #### Build status
 
 [![Build and Test](https://github.com/jcoliz/ExcelFinancialFunctions/actions/workflows/dotnet.yml/badge.svg)](https://github.com/jcoliz/ExcelFinancialFunctions/actions/workflows/dotnet.yml)
-
 [![Build Status](https://jcoliz.visualstudio.com/ExcelFinancialFunctions/_apis/build/status/jcoliz.ExcelFinancialFunctions?branchName=master)](https://jcoliz.visualstudio.com/ExcelFinancialFunctions/_build/latest?definitionId=27&branchName=master)
 
 #### Maintainer(s)
