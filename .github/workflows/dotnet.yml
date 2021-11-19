@@ -25,10 +25,10 @@ jobs:
       working-directory: src/ExcelFinancialFunctions
     - name: Restore dependencies for Tests
       run: dotnet restore
-      working-directory: src/ExcelFinancialFunctions.Tests
+      working-directory: tests/ExcelFinancialFunctions.Tests
     - name: Build Tests
       run: dotnet build --no-restore
-      working-directory: test/ExcelFinancialFunctions.Tests
+      working-directory: tests/ExcelFinancialFunctions.Tests
     - name: Run Tests
       run: dotnet test --no-build --verbosity normal
-      working-directory: test/ExcelFinancialFunctions.Tests
+      working-directory: tests/ExcelFinancialFunctions.Tests
