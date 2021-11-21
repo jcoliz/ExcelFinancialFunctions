@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      TARGETS: "src/ExcelFinancialFunctions;tests/ExcelFinancialFunctions_Tests"
+      TARGETS: "src\ExcelFinancialFunctions;tests\ExcelFinancialFunctions_Tests"
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
